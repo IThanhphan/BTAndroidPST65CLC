@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.335"
+        tools:layout_editor_absoluteX="1dp">
+
+        <TextView
+            android:id="@+id/txt_textEdit"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="154dp"
+            tools:layout_editor_absoluteY="83dp" />
+
+        <Button
+            android:id="@+id/btn_sayhi"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="116dp"
+            android:background="#FFEB3B"
+            android:text="Say Hi"
+            android:textSize="16sp"
+            app:cornerRadius="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_textEdit" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

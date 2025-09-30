@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "clc65.ithanhphan.thuchanh1"
-    compileSdk = 36
+    namespace = "clc65.ithanhphan.caculator_lam_them"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "clc65.ithanhphan.thuchanh1"
+        applicationId = "clc65.ithanhphan.caculator_lam_them"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Bóng sáng phía trên để tạo hiệu ứng lõm -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#66FFFFFF"
+                android:endColor="#00000000"
+                android:angle="270"/>
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+
+    <!-- Lớp chính -->
+    <item android:top="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#1E88E5"
+                android:centerColor="#1976D2"
+                android:endColor="#1565C0"
+                android:angle="270" />
+            <corners android:radius="20dp" />
+            <stroke android:width="2dp" android:color="#3399FF" />
+        </shape>
+    </item>
+
+    <!-- Bóng tối dưới để tạo cảm giác lõm vào trong -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#00000000"
+                android:endColor="#33000000"
+                android:angle="90"/>
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+
+</layer-list>

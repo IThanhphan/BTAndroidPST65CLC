@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +13,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class SecondActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +20,11 @@ public class SecondActivity extends AppCompatActivity {
         //1. Nha ve Intent
         Intent iNhanDuoc = getIntent();
         //2. Boc ra
-        String htNhanDuoc = iNhanDuoc.getStringExtra("h1");
+        String htNhanDuoc = iNhanDuoc.getStringExtra("ht");
         //3. Xu ly
         //Set len textview
+        TextView tv_hienthi = findViewById(R.id.tv_hienthi);
+        tv_hienthi.setText(htNhanDuoc);
         //nut Back
         Button buttonBack = findViewById(R.id.btnBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {

@@ -1,6 +1,7 @@
 package gk1.phansithanh.thigiuakibmi;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,16 +10,22 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+    Button btnBMI, btnMonAn, btnBaiThuoc, btnGioiThieu;
+
+    void timDK() {
+        btnBMI = findViewById(R.id.btn_bmi);
+        btnMonAn = findViewById(R.id.btn_mon_an);
+        btnBaiThuoc = findViewById(R.id.btn_bai_thuoc);
+        btnGioiThieu = findViewById(R.id.btn_gioi_thieu);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        timDK();
+
+
     }
 }

@@ -44,5 +44,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnBaiThuoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iBaiThuoc = new Intent(MainActivity.this, BaiThuoc.class);
+                startActivity(iBaiThuoc);
+            }
+        });
+
     }
 }

@@ -39,7 +39,7 @@
             android:layout_marginTop="47dp"
             android:layout_marginEnd="48dp"
             android:layout_marginBottom="64dp"
-            android:text="Tính chỉ số cơ thể"
+            android:text="Danh mục món ăn"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"

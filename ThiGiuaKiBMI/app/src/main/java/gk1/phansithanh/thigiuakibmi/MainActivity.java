@@ -52,5 +52,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnGioiThieu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iGioiThieu = new Intent(MainActivity.this, GioiThieu.class);
+                startActivity(iGioiThieu);
+            }
+        });
+
     }
 }

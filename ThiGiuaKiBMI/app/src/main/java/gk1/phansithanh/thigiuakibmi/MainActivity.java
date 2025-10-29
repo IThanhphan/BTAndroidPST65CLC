@@ -36,5 +36,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnMonAn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iMonAn = new Intent(MainActivity.this, MonAn.class);
+                startActivity(iMonAn);
+            }
+        });
+
     }
 }

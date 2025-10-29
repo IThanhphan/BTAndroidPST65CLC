@@ -1,6 +1,8 @@
 package gk1.phansithanh.thigiuakibmi;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -26,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
         timDK();
 
+        btnBMI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iBMI = new Intent(MainActivity.this, BMI.class);
+                startActivity(iBMI);
+            }
+        });
 
     }
 }

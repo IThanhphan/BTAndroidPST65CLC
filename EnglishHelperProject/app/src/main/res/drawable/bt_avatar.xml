@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Hình tròn màu trắng -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF"/>
+        </shape>
+    </item>
+
+    <!-- Hình ảnh nằm ở giữa -->
+    <item
+        android:gravity="center"
+        android:width="40dp"
+        android:height="40dp"
+        android:drawable="@drawable/avatar"/>
+</layer-list>

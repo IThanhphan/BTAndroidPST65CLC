@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "clc65.ithanhphan.englishhelperproject"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "clc65.ithanhphan.englishhelperproject"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 

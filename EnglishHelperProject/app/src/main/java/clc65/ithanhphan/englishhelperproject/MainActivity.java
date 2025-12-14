@@ -26,12 +26,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     SQLiteDatabase db;
+    Button plusBtn, flashCardBtn, helperBtn;
+    TextView numVoca;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button plusBtn = findViewById(R.id.plus_btn);
-        TextView numVoca = findViewById(R.id.num_voca);
+        plusBtn = findViewById(R.id.plus_btn);
+        numVoca = findViewById(R.id.num_voca);
+        flashCardBtn = findViewById(R.id.flash_card_btn);
+        helperBtn = findViewById(R.id.helper_btn);
 
         ArrayList<Vocabulary> dsTu = getVocabularyData();
         ArrayList<String> dsTenTu = new ArrayList<>();
@@ -42,11 +47,28 @@ public class MainActivity extends AppCompatActivity {
 
         numVoca.setText(dsTu.size() + " từ");
 
-        Intent iflashCard = new Intent(MainActivity.this, FlashCardActivity.class);
-        startActivity(iflashCard);
+        flashCardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iflashCard = new Intent(MainActivity.this, FlashCardActivity.class);
+                startActivity(iflashCard);
+            }
+        });
+
+        helperBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iHelper = new Intent(MainActivity.this, HelperActivity.class);
+                startActivity(iHelper);
+            }
+        });
+
 
         ListView listView = findViewById(R.id.lst_vocabulary);
-        ArrayAdapter<String> adapterTuVung = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, dsTenTu);
+//        ArrayAdapter<String> adapterTuVung = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, dsTenTu);
+//        listView.setAdapter(adapterTuVung);
+
+        VocabularyAdapter adapterTuVung = new VocabularyAdapter(MainActivity.this, dsTu);
         listView.setAdapter(adapterTuVung);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -135,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showEditDialog(Vocabulary tu, ArrayList<Vocabulary> dsTu, ArrayList<String> dsTenTu, ArrayAdapter<String> adapter, TextView numVoca) {
+    private void showEditDialog(Vocabulary tu, ArrayList<Vocabulary> dsTu, ArrayList<String> dsTenTu, VocabularyAdapter adapter, TextView numVoca) {
 
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_add_word, null);
         EditText etWord = dialogView.findViewById(R.id.etWord);

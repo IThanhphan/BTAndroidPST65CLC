@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             dsTenTu.add(tu.getWord());
         }
 
-        numVoca.setText(dsTu.size() + " từ");
+        numVoca.setText("\uD83C\uDF10  " + dsTu.size() + " từ");
 
         flashCardBtn.setOnClickListener(new View.OnClickListener() {
             @Override

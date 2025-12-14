@@ -17,7 +17,7 @@ public class PracticeActivity2 extends AppCompatActivity {
     TextView questionText, progressText;
     Button btnA, btnB, btnC, btnD, nextBtn;
 
-    ArrayList<WordItem> questions = new ArrayList<>();
+    ArrayList<Vocabulary> questions = new ArrayList<>();
     ArrayList<String> choices = new ArrayList<>();
 
     int currentIndex = 0;
@@ -93,10 +93,10 @@ public class PracticeActivity2 extends AppCompatActivity {
         db = openOrCreateDatabase("vocabulary.db", MODE_PRIVATE, null);
 
         Cursor cursor = db.rawQuery("SELECT WORD, NOTE FROM VOCABULARY", null);
-        ArrayList<WordItem> allWords = new ArrayList<>();
+        ArrayList<Vocabulary> allWords = new ArrayList<>();
 
         while (cursor.moveToNext()) {
-            allWords.add(new WordItem(
+            allWords.add(new Vocabulary(
                     cursor.getString(0),
                     cursor.getString(1)
             ));
@@ -113,16 +113,16 @@ public class PracticeActivity2 extends AppCompatActivity {
 
     private void showQuestion() {
         if (currentIndex < questions.size()) {
-            WordItem item = questions.get(currentIndex);
+            Vocabulary item = questions.get(currentIndex);
 
-            questionText.setText("Nghĩa tiếng Việt: " + item.meaning);
+            questionText.setText("Nghĩa tiếng Việt: " + item.getNote());
             progressText.setText((currentIndex + 1) + "/" + questions.size());
 
-            correctAnswer = item.word;
+            correctAnswer = item.getWord();
             selectedAnswer = "";
             isAnswered = false;
 
-            createChoices(item.word);
+            createChoices(item.getWord());
             resetButtons();
         } else {
             showFinalScore();
@@ -134,9 +134,9 @@ public class PracticeActivity2 extends AppCompatActivity {
         choices.clear();
         choices.add(correctWord);
 
-        for (WordItem w : questions) {
-            if (!w.word.equals(correctWord) && choices.size() < 4) {
-                choices.add(w.word);
+        for (Vocabulary w : questions) {
+            if (!w.getWord().equals(correctWord) && choices.size() < 4) {
+                choices.add(w.getWord());
             }
         }
 
@@ -194,13 +194,5 @@ public class PracticeActivity2 extends AppCompatActivity {
         btnB.setBackgroundResource(R.drawable.card_input);
         btnC.setBackgroundResource(R.drawable.card_input);
         btnD.setBackgroundResource(R.drawable.card_input);
-    }
-
-    class WordItem {
-        String word, meaning;
-        WordItem(String w, String m) {
-            word = w;
-            meaning = m;
-        }
     }
 }

@@ -17,9 +17,11 @@ public class PracticeActivity extends AppCompatActivity {
     EditText answerInput;
     Button nextBtn;
 
-    ArrayList<WordItem> questions = new ArrayList<>();
+    ArrayList<Vocabulary> questions = new ArrayList<>();
     int currentIndex = 0;
     int score = 0;
+    boolean isAnswered = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +50,10 @@ public class PracticeActivity extends AppCompatActivity {
 
         Cursor cursor = db.rawQuery("SELECT WORD, NOTE FROM VOCABULARY", null);
 
-        ArrayList<WordItem> allWords = new ArrayList<>();
+        ArrayList<Vocabulary> allWords = new ArrayList<>();
 
         while (cursor.moveToNext()) {
-            allWords.add(new WordItem(
+            allWords.add(new Vocabulary(
                     cursor.getString(0),
                     cursor.getString(1)
             ));
@@ -68,27 +70,48 @@ public class PracticeActivity extends AppCompatActivity {
 
     private void showQuestion() {
         if (currentIndex < questions.size()) {
-            WordItem item = questions.get(currentIndex);
+            Vocabulary item = questions.get(currentIndex);
 
-            questionText.setText("Nghĩa tiếng Việt: " + item.meaning);
+            questionText.setText("Nghĩa tiếng Việt: " + item.getNote());
             progressText.setText((currentIndex + 1) + "/" + questions.size());
+
             answerInput.setText("");
+            answerInput.setEnabled(true);
+            answerInput.setBackgroundResource(R.drawable.input_bg);
+
+            nextBtn.setText("Kiểm tra");
+            isAnswered = false;
+
         } else {
             showFinalScore();
         }
     }
 
+
     private void checkAnswer() {
+        if (isAnswered) {
+            currentIndex++;
+            showQuestion();
+            return;
+        }
+
         String userAns = answerInput.getText().toString().trim().toLowerCase();
-        String correctAns = questions.get(currentIndex).word.toLowerCase();
+        String correctAns = questions.get(currentIndex).getWord().toLowerCase();
+
+        isAnswered = true;
+        answerInput.setEnabled(false);
 
         if (userAns.equals(correctAns)) {
             score++;
+            answerInput.setBackgroundResource(R.drawable.card_correct);
+        } else {
+            answerInput.setText(correctAns);
+            answerInput.setBackgroundResource(R.drawable.card_wrong);
         }
 
-        currentIndex++;
-        showQuestion();
+        nextBtn.setText("Câu tiếp theo");
     }
+
 
     private void showFinalScore() {
         questionText.setText("Hoàn thành!\nĐiểm của bạn: " + score + "/10");
@@ -121,10 +144,5 @@ public class PracticeActivity extends AppCompatActivity {
                 checkAnswer();
             }
         });
-    }
-
-    class WordItem {
-        String word, meaning;
-        WordItem(String w, String m) { word = w; meaning = m; }
     }
 }

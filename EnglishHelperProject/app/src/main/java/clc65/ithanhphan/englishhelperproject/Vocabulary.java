@@ -10,6 +10,11 @@ public class Vocabulary {
         this.note = note;
     }
 
+    public Vocabulary(String word, String note) {
+        this.word = word;
+        this.note = note;
+    }
+
     public Vocabulary() {}
 
     public int getVocabularyID() {

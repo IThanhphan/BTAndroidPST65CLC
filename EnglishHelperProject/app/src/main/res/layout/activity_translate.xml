@@ -1,56 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    android:background="#F0EBBB">
+    android:background="#F0EBBB"
+    android:padding="20dp">
 
-    <EditText
-        android:id="@+id/input_text"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_input"
         android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:background="@drawable/card_input"
-        android:gravity="top"
-        android:hint="Nhập từ/câu cần dịch..."
-        android:padding="20dp"
-        android:textSize="18sp"
-        android:textColor="#000"
-        android:textColorHint="#777"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="6dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔤 Văn bản cần dịch"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#5A3E2B"/>
+
+            <EditText
+                android:id="@+id/input_text"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@android:color/transparent"
+                android:gravity="top|start"
+                android:hint="Nhập từ hoặc câu cần dịch..."
+                android:textSize="18sp"
+                android:textColor="#2E2E2E"
+                android:textColorHint="#8A8A8A"
+                android:inputType="textMultiLine"
+                android:paddingTop="12dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/switch_lang_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/card_input"
+                android:text="EN → VI" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/translate_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/button_bg"
-        android:paddingLeft="40dp"
-        android:paddingTop="14dp"
-        android:paddingRight="40dp"
-        android:paddingBottom="14dp"
-        android:text="Dịch"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:paddingHorizontal="48dp"
+        android:text="🔄 DỊCH"
+        android:textAllCaps="true"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/card_input"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_text" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/output_text"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_output"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="0dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/card_output"
-        android:padding="20dp"
-        android:textSize="20sp"
-        android:textColor="#000"
-        android:gravity="top"
-        app:layout_constraintTop_toBottomOf="@+id/translate_btn"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="6dp"
+        app:layout_constraintTop_toBottomOf="@id/translate_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌐 Kết quả dịch"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#5A3E2B"/>
+
+            <TextView
+                android:id="@+id/output_text"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingTop="12dp"
+                android:textSize="19sp"
+                android:textColor="#1F1F1F"
+                android:lineSpacingExtra="6dp"
+                android:hint="Kết quả sẽ hiển thị tại đây"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
